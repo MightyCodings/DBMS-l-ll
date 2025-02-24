@@ -1,0 +1,1047 @@
+1)Block of Addition of Two Numbers.(Statically)
+SQL> declare
+  2  a number:=10;
+  3  b number:=20;
+  4  c number;
+  5  begin
+  6  c:=a+b;
+  7  dbms_output.put_line(c);
+  8  end;
+  9  /
+
+30
+
+PL/SQL procedure successfully completed.
+
+
+2)Block of Addition of Two Numbers.(Dynamically)
+declare
+a number;
+b number;
+c number;
+begin
+a:=&a;
+b:=&b;
+c:=a+b;
+dbms_output.put_line('Addition='||c);
+end;
+/
+
+Enter value for a: 20
+old   6: a:=&a;
+new   6: a:=20;
+Enter value for b: 40
+old   7: b:=&b;
+new   7: b:=40;
+
+Addition=60
+
+PL/SQL procedure successfully completed.
+
+3)Block of Area of Circle.
+
+declare
+pi number:=3.14;
+r number;
+area number;
+begin
+r:=&r;
+area:=pi*r*r;
+dbms_output.put_line('Area of Circle='||area);
+end;
+/
+
+Enter value for r: 65
+old   6: r:=&r;
+new   6: r:=65;
+
+Area of Circle=13266.5
+
+PL/SQL procedure successfully completed.
+
+4)Block of Number is Even Or Odd.(If Statement)
+SQL> declare
+  2  n number;
+  3  begin
+  4  n:=&n;
+  5  if n mod 2=0 then
+  6  dbms_output.put_line('Number is Even');
+  7  else
+  8  dbms_output.put_line('Number is Odd');
+  9  end if;
+ 10  end;
+ 11  /
+Enter value for n: 5
+old   4: n:=&n;
+new   4: n:=5;
+
+Number is Odd
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 4
+old   4: n:=&n;
+new   4: n:=4;
+
+Number is Even
+
+PL/SQL procedure successfully completed.
+
+5)Block of if elseif statement.
+
+declare
+ch varchar2(20);
+begin
+ch:=&ch;
+if ch='A' then
+dbms_output.put_line('Sunday');
+elsif ch='B' then
+dbms_output.put_line('Monday');
+elsif ch='C' then
+dbms_output.put_line('Tuesday');
+elsif ch='D' then
+dbms_output.put_line('Wednsday');
+elsif ch='E' then
+dbms_output.put_line('Thursday');
+elsif ch='F' then
+dbms_output.put_line('Friday');
+elsif ch='G' then
+dbms_output.put_line('Saturday');
+else
+dbms_output.put_line('Wrong Input!');
+end if;
+end;
+/
+
+Enter value for ch: 'A'
+old   4: ch:=&ch;
+new   4: ch:='A';
+Sunday
+
+PL/SQL procedure successfully completed.
+
+6)Block of if elseif statement2).
+
+   declare
+   a number;
+   b number;
+   c number;
+   ch varchar2(10);
+   begin
+   a:=&a;
+   b:=&b;
+   ch:=&ch;
+   if ch='+' then
+   c:=a+b;	
+   dbms_output.put_line('Addition='||c);
+   elsif ch='-' then
+   c:=a-b;
+   dbms_output.put_line('Subtraction='||c);
+   elsif ch='*' then
+   c:=a*b;
+   dbms_output.put_line('Multiplcation='||c);
+   elsif ch='/' then
+   c:=a/b;
+   dbms_output.put_line('Division='||c);
+   else 
+   dbms_output.put_line('Wrong Input!');
+   end if;
+   end;
+   /
+
+
+Enter value for a: 3
+old   7:    a:=&a;
+new   7:    a:=3;
+Enter value for b: 4
+old   8:    b:=&b;
+new   8:    b:=4;
+Enter value for ch: '+'
+old   9:    ch:=&ch;
+new   9:    ch:='+';
+Addition=7
+
+PL/SQL procedure successfully completed.
+
+Enter value for a: 4
+old   7:    a:=&a;
+new   7:    a:=4;
+Enter value for b: 5
+old   8:    b:=&b;
+new   8:    b:=5;
+Enter value for ch: '*'
+old   9:    ch:=&ch;
+new   9:    ch:='*';
+Multiplcation=20
+
+PL/SQL procedure successfully completed.
+
+
+7)Block of Nested If else
+
+declare
+a number:=100;
+b number:=200;
+begin
+if a=100 then
+if b=200 then
+dbms_output.put_line('a is 100 and b is 200');
+end if;
+end if;
+end;
+/
+
+a is 100 and b is 200
+
+PL/SQL procedure successfully completed.
+
+
+8)Block of Case Statement
+
+declare
+ch number:=&ch;
+begin
+case ch
+when 0 then
+dbms_output.put_line('Zero');
+when 1 then
+dbms_output.put_line('One');
+when 2 then
+dbms_output.put_line('Two');
+when 3 then
+dbms_output.put_line('Three');
+when 4 then
+dbms_output.put_line('Four');
+when 5 then
+dbms_output.put_line('Five');
+when 6 then
+dbms_output.put_line('Six');
+when 7 then
+dbms_output.put_line('Seven');
+when 8 then
+dbms_output.put_line('Eight');
+when 9 then
+dbms_output.put_line('Nine');
+else
+dbms_output.put_line('Wrong Input..');
+end case;
+end;
+/
+
+o/p
+Enter value for ch: 0
+old   2: ch number:=&ch;
+new   2: ch number:=0;
+Zero
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for ch: 4
+old   2: ch number:=&ch;
+new   2: ch number:=4;
+Four
+
+PL/SQL procedure successfully completed.
+
+#2)
+declare
+ch number:=&ch;
+begin
+case ch
+when 1 then
+dbms_output.put_line('January');
+when 2 then
+dbms_output.put_line('February');
+when 3 then
+dbms_output.put_line('March');
+when 4 then
+dbms_output.put_line('April');
+when 5 then
+dbms_output.put_line('May');
+when 6 then
+dbms_output.put_line('June');
+when 7 then
+dbms_output.put_line('July');
+when 8 then
+dbms_output.put_line('August');
+when 9then
+dbms_output.put_line('Septber');
+when 10 then
+dbms_output.put_line('October');
+when 11 then
+dbms_output.put_line('November');
+when 12 then
+dbms_output.put_line('December');
+else
+dbms_output.put_line('Wrong Input..');
+end case;
+end;
+/
+
+o/p
+Enter value for ch: 1
+old   2: ch number:=&ch;
+new   2: ch number:=1;
+January
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for ch: 2
+old   2: ch number:=&ch;
+new   2: ch number:=2;
+February
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for ch: 3
+old   2: ch number:=&ch;
+new   2: ch number:=3;
+March
+
+9)Block of o to statement.
+
+begin
+dbms_output.put_line('One');
+dbms_output.put_line('Two');
+goto s;
+dbms_output.put_line('Theree');
+dbms_output.put_line('Four');
+<<s>>
+dbms_output.put_line('Five');
+dbms_output.put_line('Six');
+end;
+/
+
+One
+Two
+Five
+Six
+
+PL/SQL procedure successfully completed.
+
+
+10)Block of Average of Entered Subject.
+
+declare
+Seat number:=&Seat;
+S1 number:=&S1;
+S2 number:=&S2;			
+S3 number:=&S3;
+S4 number:=&S4;
+S5 number:=&S5;
+S6 number:=&S6;
+S7 number:=&S7;
+S8 number:=&S8;
+S9 number:=&S9;
+S10 number:=&S10;
+S11 number:=&S11;
+S12 number:=&S12;
+S13 number:=&S13;
+S14 number:=&S14;
+Av number;
+begin
+Av:=(S1+S2+S3+S4+S5+S6+S7+S8+S9+S10+S11+S12+S13+S14)/14;
+dbms_output.put_line('Average='||Av);
+if Av>=70 then
+dbms_output.put_line('Distinction');
+elsif Av<70 and Av>=60 then
+dbms_output.put_line('First Class');
+elsif Av<60 and Av>=50 then
+dbms_output.put_line('Second Class');
+elsif Av<50 and Av>=40 then
+dbms_output.put_line('Pass Class');
+else
+dbms_output.put_line('Fail');
+end if;
+end;
+/
+
+o/p
+Enter value for seat: 315848
+old   2: Seat number:=&Seat;
+new   2: Seat number:=315848;
+Enter value for s1: 31
+old   3: S1 number:=&S1;
+new   3: S1 number:=31;
+Enter value for s2: 32
+old   4: S2 number:=&S2;
+new   4: S2 number:=32;
+Enter value for s3: 44
+old   5: S3 number:=&S3;
+new   5: S3 number:=44;
+Enter value for s4: 37
+old   6: S4 number:=&S4;
+new   6: S4 number:=37;
+Enter value for s5: 32
+old   7: S5 number:=&S5;
+new   7: S5 number:=32;
+Enter value for s6: 46
+old   8: S6 number:=&S6;
+new   8: S6 number:=46;
+Enter value for s7: 35
+old   9: S7 number:=&S7;
+new   9: S7 number:=35;
+Enter value for s8: 47
+old  10: S8 number:=&S8;
+new  10: S8 number:=47;
+Enter value for s9: 43
+old  11: S9 number:=&S9;
+new  11: S9 number:=43;
+Enter value for s10: 93
+old  12: S10 number:=&S10;
+new  12: S10 number:=93;
+Enter value for s11: 94
+old  13: S11 number:=&S11;
+new  13: S11 number:=94;
+Enter value for s12: 92
+old  14: S12 number:=&S12;
+new  14: S12 number:=92;
+Enter value for s13: 95
+old  15: S13 number:=&S13;
+new  15: S13 number:=95;
+Enter value for s14: 34
+old  16: S14 number:=&S14;
+new  16: S14 number:=34;
+Average=53.92857142857142857142857142857142857143
+Second Class
+
+PL/SQL procedure successfully completed.
+
+11)Block of Loop.
+
+declare
+i number:=1;
+begin
+loop
+dbms_output.put_line(i);
+i=i+1;
+exit when i<5;
+end loop;
+end;
+/
+
+1
+2
+3
+4
+5
+
+PL/SQL procedure successfully completed.
+
+#2)
+declare
+i number:=10;
+begin
+loop
+dbms_output.put_line(i);
+i:=i-1;
+exit when i<1;
+end loop;
+end;
+/
+
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+PL/SQL procedure successfully completed.
+
+#ii)
+declare
+i number:=1;
+begin
+loop
+dbms_output.put_line(i);
+i:=i+1;
+if i>5 then
+exit;
+end if;
+end loop;
+end;
+/
+
+#iii)
+declare
+i number:=10;
+begin
+loop
+dbms_output.put_line(i);
+i:=i-1;
+if i<1 then
+exit;
+end if;
+end loop;
+end;
+/
+
+12)Block of While Loop.
+#1)Block of Sum of Digit.
+declare
+n number:=&n;
+r number;
+s number:=0;
+begin
+while n>0 loop
+r:=mod(n,10);
+s:=s+r;
+n:=floor(n/10);
+end loop;
+dbms_output.put_line(s);
+end;
+/
+
+Enter value for n: 123
+old   2: n number:=&n;
+new   2: n number:=123;
+6
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 324
+old   2: n number:=&n;
+new   2: n number:=324;
+9
+
+PL/SQL procedure successfully completed.
+
+13)Block of Reverse Number.
+
+declare
+n number:=&n;
+r number;
+s number:=0;
+begin
+while n>0 loop
+r:=mod(n,10);
+s:=s*10+r;
+n:=floor(n/10);
+end loop;
+dbms_output.put_line(s);
+end;
+/
+
+SQL> /
+Enter value for n: 345
+old   2: n number:=&n;
+new   2: n number:=345;
+543
+
+PL/SQL procedure successfully completed.
+
+14)Block of Palindrome Number.
+
+declare
+n number:=&n;
+s number:=0;
+r number;
+t number:=n;
+begin
+while n>0 loop
+r:=mod(n,10);
+s:=s*10+r;
+n:=floor(n/10);
+end loop;
+if(s=t) then
+dbms_output.put_line('Number is Palindrome.');
+else
+dbms_output.put_line('Number is Not Palindrome.');
+end if;
+end ;
+/
+
+
+Enter value for n: 121
+old   2: n number:=&n;
+new   2: n number:=121;
+Number is Palindrome.
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 433
+old   2: n number:=&n;
+new   2: n number:=433;
+Number is Not Palindrome.
+
+PL/SQL procedure successfully completed.
+
+15)Block of Armstrong Number.
+declare
+n number:=&n;
+s number:=0;
+r number;
+t number:=n;
+begin
+while n>0 loop
+r:=mod(n,10);
+s:=s+power(r,3);
+n:=floor(n/10);
+end loop;
+if(s=t) then
+dbms_output.put_line('Number is Armstrong.');
+else
+dbms_output.put_line('Number is Not Armstrong');
+end if;
+end ;
+/
+
+Enter value for n: 153
+old   2: n number:=&n;
+new   2: n number:=153;
+Number is Armstrong.
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 485
+old   2: n number:=&n;
+new   2: n number:=485;
+Number is Not .Armstrong
+
+PL/SQL procedure successfully completed.
+
+
+16)Block of calculate percentage.
+
+declare
+Seat-no number:=&Seat-no;
+Total number:=450;
+S1 number:=&S1;
+S2 number:=&S2;			
+S3 number:=&S3;			
+S4 number:=&S4;
+S5 number:=&S5;
+S6 number:=&S6;
+S7 number:=&S7;
+S8 number:=&S8;
+S9 number:=&S9;
+Result number;
+begin
+Result:=(S1+S2+S3+S4+S5+S6+S7+S8+S9)/Total*100;
+dbms_output.put_line('Result='||Result);
+if Result>=70 then
+dbms_output.put_line('Distinction');
+elsif result<70 and Result>=60 then
+dbms_output.put_line('First Class');
+elsif Result<60 and Result>=50 then
+dbms_output.put_line('Second Class');
+elsif Result<50 and Result>=40 then
+dbms_output.put_line('Pass Class');
+else
+dbms_output.put_line('Fail');
+end if;
+end;
+/
+
+17)Block of for loop.
+
+declare
+i number;
+begin
+for i in 1..10 loop
+dbms_output.put_line(i);
+end loop;
+end;
+/
+
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+
+PL/SQL procedure successfully completed.
+
+#2)Block of Reverse using for.
+
+
+create or replace procedure reverse is
+i number;
+begin
+for i in reverse 1..10 loop
+dbms_output.put_line(i);
+end loop;
+end;
+/
+
+SQL> execute reverse;
+10
+9
+8
+7
+6
+5
+4
+3
+2
+1
+
+PL/SQL procedure successfully completed.
+
+#3)Block of Prime Number using for loop;
+
+declare
+n number;
+i number;
+c number:=0;
+begin
+n:=&n;
+for i in 1..n loop
+if mod(n,i)=0 then
+c:=c+1;
+end if;
+end loop;
+if c=2 then
+dbms_output.put_line('Number is Prime.');
+else
+dbms_output.put_line('Number is Not Prime.');
+end if;
+end;
+/
+
+
+Enter value for n: 4
+old   6: n:=&n;
+new   6: n:=4;
+Number is Not Prime.
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 3
+old   6: n:=&n;
+new   6: n:=3;
+Number is Prime.
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 6
+old   6: n:=&n;
+new   6: n:=6;
+Number is Not Prime.
+
+PL/SQL procedure successfully completed.
+
+SQL> /
+Enter value for n: 7
+old   6: n:=&n;
+new   6: n:=7;
+Number is Prime.
+
+PL/SQL procedure successfully completed.
+
+#4)Block of Pattern.
+
+declare
+n number:=5;
+i number;
+j number;
+begin
+for i in 1..n loop
+for j in 1..n loop
+dbms_output.put_line('*');
+end loop;
+dbms_output.new_line;
+end loop;
+end;
+/
+
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+*
+
+PL/SQL procedure successfully completed.
+
+#5)
+
+declare
+n number:=5;
+i number;
+j number;
+begin
+for i in 1..n loop
+for j in 1..n loop
+dbms_output.put('*');
+end loop;
+dbms_output.new_line;
+end loop;
+end;
+/
+
+*****
+*****
+*****
+*****
+*****
+
+#6)
+declare
+n number:=5;
+i number;
+j number;
+begin
+for i in 1..n loop
+for j in 1..n loop
+dbms_output.put(i);
+end loop;
+dbms_output.new_line;
+end loop;
+end;
+/
+
+11111
+22222
+33333
+44444
+55555
+
+PL/SQL procedure successfully completed.
+
+#7)
+declare
+n number:=5;
+i number;
+j number;
+begin
+for i in 1..n loop
+for j in 1..n loop
+dbms_output.put(j);
+end loop;
+dbms_output.new_line;
+end loop;
+end;
+/
+
+12345
+12345
+12345
+12345
+12345
+
+PL/SQL procedure successfully completed.
+
+
+declare
+n number:=5;
+i number;
+j number;
+begin
+for i in 1..n loop
+for j in 1..i loop
+dbms_output.put(i);
+end loop;
+dbms_output.new_line;
+end loop;
+end;
+/
+
+1
+22
+333
+4444
+55555
+
+PL/SQL procedure successfully completed.
+
+SQL> declare
+  2  n number:=5;
+  3  i number;
+  4  j number;
+  5  begin
+  6  for i in 1..n loop
+  7  for j in 1..i loop
+  8  dbms_output.put('*');
+  9  end loop;
+ 10  dbms_output.new_line;
+ 11  end loop;
+ 12  end;
+ 13  /
+
+*
+**
+***
+****
+*****
+
+
+17)create procedure to insert record into table.
+
+create or replace procedure ins is
+begin
+insert into emp4 values(1,'Ramesh',4000);
+end;
+/
+
+18)create a procedure to delete record from table.
+
+create or replace procedure del is
+begin
+delete from emp4 where id=1;
+end;
+/
+
+
+
+19)create procedure to update record in table.
+
+create or replace procedure upd is
+begin
+update emp4 set salary=10000 where id=3;
+end;
+/
+
+20)create  procedure to insert multiple data at a time.
+
+create or replace procedure insrec is
+i number:=1;
+id number:=1;
+salary number:=5000;
+begin
+while i<=5 loop
+insert into emp5 values(id,salary);
+id:=id+1;
+salary:=salary+500;
+i:=i+1;
+end loop;
+end;
+/
+
+
+
+21)Create Function of Addition of two Number.
+
+create or replace function addition(a in number,b in number)return number is
+c number;
+begin
+c:=a+b;
+return c;
+end;
+/
+
+declare
+z number;
+begin
+z:=addition(10,20);
+dbms_output.put_line('Answer is='||z);
+end;
+/
+
+Anwer is=30
+
+PL/SQL procedure successfully completed.
+
+
+
+
+22)create function to count row present in the table.
+
+create or replace function cntrow return number is
+a number;
+begin
+select count(*) into a from emp2;
+return a;
+end;
+/
+
+
+declare
+z number;
+begin
+z:=cntrow();
+dbms_output.put_line('Answer is='||z);
+end;
+/
+
+        ID NAME                     SALARY
+---------- -------------------- ----------
+         1 suresh                     4000
+         2 mahesh                     3000
+         3 tushar                     3500
+
+
+
+Answer is=3
+
+23)create function forsum of digit.
+
+create or replace function sumofd(x in number)return number is
+r number;
+s number:=0;
+t number:=x;
+begin
+while t>0 loop
+r:=mod(t,10);
+s:=s+r;
+t:=floor(t/10);
+end loop;
+return s;
+end;
+/
+
+
+
+declare
+z number;
+n number:=&n;
+begin
+z:=sumofd(n);
+dbms_output.put_line('Answer is='||z);
+end;
+/
+
+Enter value for n: 587688
+old   3: n number:=&n;
+new   3: n number:=587688;
+Answer is=42
+
+PL/SQL procedure successfully completed.
+
+
+
+
+
+
+
+
+
+
