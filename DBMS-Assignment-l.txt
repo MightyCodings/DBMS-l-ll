@@ -1,0 +1,458 @@
+SQL> create table SchoolBus(Rtno number,Area varchar2(20),Capacity number,Noofstudents number,Distance number,Transporter varchar2(20),Fare number,Discount number);
+
+Table created.
+
+SQL> desc SchoolBus;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ RTNO                                                    NUMBER
+ AREA                                                     VARCHAR2(20)
+ CAPACITY                                             NUMBER
+ NOOFSTUDENTS                                 NUMBER
+ DISTANCE                                             NUMBER
+ TRANSPORTER                                    VARCHAR2(20)
+ FARE                                                     NUMBER
+ DISCOUNT                                           NUMBER
+
+SQL> insert into SchoolBus values(1,'Vasantkunj',100,120,10,'Shivam Travels',100000,500);
+
+1 row created.
+
+SQL> insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount);
+Enter value for rtno: 2
+Enter value for area: 'Nayanpuri'
+Enter value for capacity: 80
+Enter value for noofstudents: 80
+Enter value for distance: 15
+Enter value for transporter: 'Anand Travels'
+Enter value for fare: 85000
+Enter value for discount: 400
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(2,'Nayanpuri',80,80,15,'Anand Travels',85000,400)
+
+1 row created.
+
+SQL> /
+Enter value for rtno: 3
+Enter value for area: 'Pitampura'
+Enter value for capacity: 60
+Enter value for noofstudents: 55
+Enter value for distance: 30
+Enter value for transporter: 'Anand Travels'
+Enter value for fare: 60000
+Enter value for discount: 300
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(3,'Pitampura',60,55,30,'Anand Travels',60000,300)
+
+1 row created.
+
+
+SQL> /
+Enter value for rtno: 4
+Enter value for area: 'Rajouri Garden'
+Enter value for capacity: 100
+Enter value for noofstudents: 90
+Enter value for distance: 35
+Enter value for transporter: 'Anand Travels'
+Enter value for fare: 100000
+Enter value for discount: 500
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(4,'Rajouri Garden',100,90,35,'Anand Travels',100000,500)
+
+1 row created.
+
+
+SQL> /
+Enter value for rtno: 5
+Enter value for area: 'Yamunapuri'
+Enter value for capacity: 50
+Enter value for noofstudents: 60
+Enter value for distance: 20
+Enter value for transporter: 'Khurana Co.'
+Enter value for fare: 55000
+Enter value for discount: 300
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(5,'Yamunapuri',50,60,20,'Khurana Co.',55000,300)
+
+1 row created.
+
+
+
+SQL> /
+Enter value for rtno: 6
+Enter value for area: 'Krishna Nagari'
+Enter value for capacity: 70
+Enter value for noofstudents: 80
+Enter value for distance: 30
+Enter value for transporter: 'Yadav Co.'
+Enter value for fare: 80000
+Enter value for discount: 400
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(6,'Krishna Nagari',70,80,30,'Yadav Co.',80000,400)
+
+1 row created.
+
+
+
+SQL> /
+Enter value for rtno: 7
+Enter value for area: 'Basu Nagar'
+Enter value for capacity: 100
+Enter value for noofstudents: 110
+Enter value for distance: 20
+Enter value for transporter: 'Yadav Co.'
+Enter value for fare: 100000
+Enter value for discount: 500
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(7,'Basu Nagar',100,110,20,'Yadav Co.',100000,500)
+
+1 row created.
+
+
+SQL> /
+Enter value for rtno: 8
+Enter value for area: 'Paschim Vihar'
+Enter value for capacity: 40
+Enter value for noofstudents: 40
+Enter value for distance: 25
+Enter value for transporter: 'Saini Travels'
+Enter value for fare: 55000
+Enter value for discount: 300
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(8,'Paschim Vihar',40,40,25,'Saini Travels',55000,300)
+
+1 row created.
+
+SQL> /
+Enter value for rtno: 9
+Enter value for area: 'Saket'
+Enter value for capacity: 120
+Enter value for noofstudents: 120
+Enter value for distance: 10
+Enter value for transporter: 'Saini Travels'
+Enter value for fare: 100000
+Enter value for discount: 500
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(9,'Saket',120,120,10,'Saini Travels',100000,500)
+
+1 row created.
+
+
+SQL> /
+Enter value for rtno: 10
+Enter value for area: 'Janakpura'
+Enter value for capacity: 100
+Enter value for noofstudents: 100
+Enter value for distance: 20
+Enter value for transporter: 'Nita Tours'
+Enter value for fare: 95000
+Enter value for discount: 450
+old   1: insert into SchoolBus values(&Rtno,&Area,&Capacity,&Noofstudents,&Distance,&Transporter,&Fare,&Discount)
+new   1: insert into SchoolBus values(10,'Janakpura',100,100,20,'Nita Tours',95000,450)
+
+1 row created.
+
+
+SQL> set linesize 200;
+SQL> select * from SchoolBus;
+
+SQL> select * from SchoolBus;
+
+      RTNO AREA             CAPACITY NOOFSTUDENTS   DISTANCE        TRANSPORTER      FARE   DISCOUNT
+               ----------         --------------------  ----------   ------------     ----------     --------------------     ----------       ----------
+         1 Vasantkunj                  100          120                                   10  Shivam Travels           100000        500
+         2 Nayanpuri                    80           80         15                             Anand Travels             85000        400
+         3 Pitampura                    60           55         30                             Anand Travels             60000        300
+         4 Rajouri Garden           100           90         35                        Anand Travels            100000        500
+         5 Yamunapuri                 50           60         20                            Khurana Co.               55000        300
+         6 Krishna Nagari             70           80         30                              Yadav Co.                 80000        400
+         7 Basu Nagar                 100          110         20                            Yadav Co.                100000        500
+         8 Paschim Vihar              40           40         25                             Saini Travels             55000        300
+         9 Saket                           120          120         10                                 Saini Travels            100000        500
+        10 Janakpura                 100          100         20                             Nita Tours                95000        450
+
+10 rows selected.
+
+1.1)SQL>insert into SchoolBus values(11,'Moti bagh',35,32,10,'Kisan Tours',35000,500);
+
+1.2)SQL> select  Area ,Transporter from SchoolBus;
+
+AREA                 TRANSPORTER
+-------------------- --------------------
+Vasantkunj           Shivam Travels
+Nayanpuri            Anand Travels
+Pitampure            Anand Travels
+Rajouri Garden       Anand Travels
+Yamunapuri           Khurana Co.
+Krishna Nagari       Yadav Co.
+Basu Nagar           Yadav Co.
+Paschim Vihar        Saini Travels
+Saket                Saini Travels
+Janakpura            Nita Tours
+Moti bagh            Kisan Tours
+
+11 rows selected.
+
+1.3)SQL>alter table SchoolBus add Discount number;
+
+1.4)SQL> alter table SchoolBus rename column Fare to Charges;
+
+Table altered.
+
+SQL> select * from SchoolBus;
+
+      RTNO AREA                   CAPACITY NOOFSTUDENTS   DISTANCE TRANSPORTER             CHARGES   DISCOUNT
+---------- -------------------- ---------- ------------ ---------- -------------------- ---------- ----------
+         1 Vasantkunj                  100          120         10 Shivam Travels           100000        500
+         2 Nayanpuri                    80           80         15 Anand Travels             85000        400
+         3 Pitampure                    60           55         30 Anand Travels             60000        300
+         4 Rajouri Garden              100           90         35 Anand Travels            100000        500
+         5 Yamunapuri                   50           60         20 Khurana Co.               55000        300
+         6 Krishna Nagari               70           80         30 Yadav Co.                 80000        400
+         7 Basu Nagar                  100          110         20 Yadav Co.                100000        500
+         8 Paschim Vihar                40           40         25 Saini Travels             55000        300
+         9 Saket                       120          120         10 Saini Travels            100000        500
+        10 Janakpura                   100          100         20 Nita Tours                95000        450
+        11 Moti bagh                    35           32         10 Kisan Tours               35000        500
+
+1.5)SQL> alter table SchoolBus drop column Discount;
+
+Table altered.
+
+SQL> select * from SchoolBus;
+
+      RTNO AREA                   CAPACITY NOOFSTUDENTS   DISTANCE TRANSPORTER             CHARGES
+---------- -------------------- ---------- ------------ ---------- -------------------- ----------
+         1 Vasantkunj                  100          120         10 Shivam Travels           100000
+         2 Nayanpuri                    80           80         15 Anand Travels             85000
+         3 Pitampure                    60           55         30 Anand Travels             60000
+         4 Rajouri Garden              100           90         35 Anand Travels            100000
+         5 Yamunapuri                   50           60         20 Khurana Co.               55000
+         6 Krishna Nagari               70           80         30 Yadav Co.                 80000
+         7 Basu Nagar                  100          110         20 Yadav Co.                100000
+         8 Paschim Vihar                40           40         25 Saini Travels             55000
+         9 Saket                       120          120         10 Saini Travels            100000
+        10 Janakpura                   100          100         20 Nita Tours                95000
+        11 Moti bagh                    35           32         10 Kisan Tours               35000
+
+11 rows selected.
+
+1.6)SQL> select Transporter from SchoolBus where Distance=20;
+
+TRANSPORTER
+--------------------
+Khurana Co.
+Yadav Co.
+Nita Tours
+
+
+1.7)SQL> select Area from SchoolBus where Capacity >= 80 and Noofstudents <= 120;
+
+AREA
+--------------------
+Vasantkunj
+Nayanpuri
+Rajouri Garden
+Basu Nagar
+Saket
+Janakpura
+
+6 rows selected.
+
+1.8)SQL> select Area from SchoolBus where Capacity = 120 and Distance =120;
+
+no rows selected
+
+1.9)SQL> select Area from SchoolBus  descending order by Capacity;
+
+AREA
+--------------------
+Paschim Vihar
+Yamunapuri
+Pitampura
+Krishna Nagari
+Nayanpuri
+Rajouri Garden
+Janakpura
+Basu Nagar
+Vasantkunj
+Saket
+
+10 rows selected.
+
+
+1.10)SQL> select Transporter from SchoolBus where Area in('Saket', 'Nayanpuri', 'Rajouri');
+
+TRANSPORTER
+--------------------
+Anand Travels
+Saini Travels
+
+
+1.11)SQL> select Transporter from SchoolBus where Capacity < Noofstudents;
+
+TRANSPORTER
+--------------------
+Shivam Tours
+Khurana Co.
+Yadav Co.
+Yadav Co.
+
+
+1.12)SQL> select Transporter from SchoolBus where Distance > 20 and Fare < 80000;
+
+TRANSPORTER
+--------------------
+Anand Travels
+Saini Travels
+
+
+1.13)SQL> create table Anand_Travels(sr number,cname varchar2(20),cnumber number);
+
+Table created.
+
+1.14)SQL> alter table Anand_Travels rename to Ad_Travels;
+
+Table altered.
+
+1.15)SQL> delete from SchoolBus where Transporter='Yadav Co.';
+
+2 rows deleted.
+
+
+1.16)SQL> select Rtno,Transporter from SchoolBus where Capacity > Noofstudents order by Rtno;
+
+      RTNO TRANSPORTER
+---------- --------------------
+         3 Anand Tours
+         4 Anand Tours
+
+
+1.17)
+
+
+1.18)SQL> select distinct Transporter from SchoolBus;
+
+TRANSPORTER
+--------------------
+Khurana Co.
+Yadav Co.
+Nita Tours
+Shivam Tours
+Kisan Tours
+Anand Tours
+Saini Tours
+
+7 rows selected.
+
+
+
+1.19)SQL> select Rtno from SchoolBus where Distance < 25;
+
+      RTNO
+----------
+         1
+         2
+         5
+         9
+        10
+
+1.20)SQL> select  Area from SchoolBus where Area like '%pu%';
+
+AREA
+--------------------
+Nayanpuri
+Pitampura
+Yamunapuri
+Janakpura
+
+
+1.21)
+
+
+
+1.22)SQL> select Area,Rtno from SchoolBus;
+
+AREA                       RTNO
+-------------------- ----------
+Vasantkunj                    1
+Nayanpuri                     2
+Pitampura                     3
+Rajouri Garden                4
+Yamunapuri                    5
+Krishna Nagari                6
+Basu Nagar                    7
+Paschim Vihar                 8
+Saket                         9
+Janakpura                    10
+
+10 rows selected.
+
+
+1.23)SQL> select Area,Transporter from SchoolBus;
+
+AREA                 TRANSPORTER
+-------------------- --------------------
+Vasantkunj           Shivam Travels
+Nayanpuri            Anand Travels
+Pitampura            Anand Travels
+Rajouri Garden       Anand Travels
+Yamunapuri           Khurana Co.
+Krishna Nagari       Yadav Co.
+Basu Nagar           Yadav Co.
+Paschim Vihar        Saini Travels
+Saket                Saini Travels
+Janakpura            Nita Tours
+
+10 rows selected.
+
+1.24)SQL> select max(Capacity) from SchoolBus;
+
+MAX(CAPACITY)
+-------------
+          120
+
+
+1.25)SQL> select Transporter,Noofstudents from SchoolBus;
+
+TRANSPORTER          NOOFSTUDENTS
+-------------------- ------------
+Shivam Travels                120
+Anand Travels                  80
+Anand Travels                  55
+Anand Travels                  90
+Khurana Co.                    60
+Yadav Co.                      80
+Yadav Co.                     110
+Saini Travels                  40
+Saini Travels                 120
+Nita Tours                    100
+
+10 rows selected.
+
+
+1.26)SQL> select avg(fare) from SchoolBus;
+
+ AVG(FARE)
+----------
+     83000
+
+
+1.27)SQL> update SchoolBus set Transporter = replace(Transporter,'Travels','Tours');
+  RTNO AREA                   CAPACITY NOOFSTUDENTS   DISTANCE TRANSPORTER                FARE   DISCOUNT
+---------- -------------------- ---------- ------------ ---------- -------------------- ---------- ----------
+         1 Vasantkunj                  100          120         10 Shivam Tours             100000        500
+         2 Nayanpuri                    80           80         15 Anand Tours               85000        400
+         3 Pitampura                    60           55         30 Anand Tours               60000        300
+         4 Rajouri Garden              100           90         35 Anand Tours              100000        500
+         5 Yamunapuri                   50           60         20 Khurana Co.               55000        300
+         6 Krishna Nagari               70           80         30 Yadav Co.                 80000        400
+         7 Basu Nagar                  100          110         20 Yadav Co.                100000        500
+         8 Paschim Vihar                40           40         25 Saini Tours               55000        300
+         9 Saket                       120          120         10 Saini Tours              100000        500
+        10 Janakpura                   100          100         20 Nita Tours                95000        450
+        11 Moti Bagh                    35           32         10 Kisan Tours               35000        500
+
+11 rows selected.
+
+1.28)

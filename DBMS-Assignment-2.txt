@@ -1,0 +1,279 @@
+SQL> create table worker(worker_id number primary key,first_name varchar2(20),last_name varchar2(20),salary number,joining_date date,department varchar2(20));
+
+Table created.
+
+SQL>insert into worker values(001,'Monika','Aaher',10000,to_date('2014/02/20','yyyy/mm/dd'),'HR');
+
+1 row created.
+
+
+SQL> select * from worker;
+
+ WORKER_ID FIRST_NAME           LAST_NAME                SALARY JOINING_D DEPARTMENT
+---------- -------------------- -------------------- ---------- --------- --------------------
+         1 Monika               Aaher                     10000 20-FEB-14 HR
+         2 Niharika             Vedpathak                  8000 11-JUN-14 Admin
+         3 Vishal               Shinde                    30000 20-FEB-14 HR
+         4 Amitabh              Survase                   28000 20-FEB-14 Admin
+         5 Vivek                Bhuse                     25000 11-JUN-14 Admin
+         6 Vipul                Diwate                    20000 11-JUN-14 Account
+         7 Satish               Kulkarni                   7500 20-JAN-14 Account
+         8 Geetika              Chavan                     9000 11-APR-14 Admin
+
+8 rows selected.
+
+
+1)To display “first_name” from worker table in upper case.
+SQL> select upper(first_name) from worker;
+
+UPPER(FIRST_NAME)
+--------------------
+MONIKA
+NIHARIKA
+VISHAL
+AMITABH
+VIVEK
+VIPUL
+SATISH
+GEETIKA
+
+8 rows selected.
+
+
+2)To display unique (distinct) values of department from worker table.
+
+SQL> select unique(department) from worker;
+
+DEPARTMENT
+--------------------
+HR
+Account
+Admin
+
+
+3)To find the position of the alphabet (‘a’) in the first name column ‘amitabh’ from worker table.
+
+SQL> select instr(first_name,'a') from worker where first_name='Amitabh';
+
+INSTR(FIRST_NAME,'A')
+---------------------
+                    5
+
+4)Fetches the unique values of department from worker table.
+
+SQL> select unique(department) from worker;
+
+DEPARTMENT
+--------------------
+HR
+Account
+Admin
+
+5)To print the first_name from worker table after replacing ‘a’ with ‘A’.
+
+SQL> select replace(first_name,'a','A')from worker;
+
+REPLACE(FIRST_NAME,'
+--------------------
+MonikA
+NihArikA
+VishAl
+AmitAbh
+Vivek
+Vipul
+SAtish
+GeetikA
+
+8 rows selected.
+
+
+6)To print the first_name and last_name from worker table into a single column.
+
+SQL> select concat(first_name,last_name)from worker;
+
+CONCAT(FIRST_NAME,LAST_NAME)
+----------------------------------------
+MonikaAaher
+NiharikaVedpathak
+VishalShinde
+AmitabhSurvase
+VivekBhuse
+VipulDiwate
+SatishKulkarni
+GeetikaChavan
+
+8 rows selected.
+
+7)To print all worker details from the worker table order by first_name ascending.
+
+SQL> select * from worker order by first_name;
+
+ WORKER_ID FIRST_NAME           LAST_NAME                SALARY JOINING_D DEPARTMENT
+---------- -------------------- -------------------- ---------- --------- --------------------
+         4 Amitabh              Survase                   28000 20-FEB-14 Admin
+         8 Geetika              Chavan                     9000 11-APR-14 Admin
+         1 Monika               Aaher                     10000 20-FEB-14 HR
+         2 Niharika             Vedpathak                  8000 11-JUN-14 Admin
+         7 Satish               Kulkarni                   7500 20-JAN-14 Account
+         6 Vipul                Diwate                    20000 11-JUN-14 Account
+         3 Vishal               Shinde                    30000 20-FEB-14 HR
+         5 Vivek                Bhuse                     25000 11-JUN-14 Admin
+
+8 rows selected.
+
+
+8)To print details of the workers whose first_name contains ‘a’.
+
+SQL> select first_name from worker where first_name like'%a%';
+
+FIRST_NAME
+--------------------
+Monika
+Niharika
+Vishal
+Amitabh
+Satish
+Geetika
+
+6 rows selected.
+
+9)To print details of the workers whose first_name ends with ‘h’ .
+
+SQL> select first_name from worker where first_name like'%h';
+
+FIRST_NAME
+--------------------
+Amitabh
+Satish
+
+10)To print details of the workers who have joined in feb 2014.
+
+11)To display the count of employees working in the department ‘admin’.
+
+SQL> select count(worker_id)from worker where department='Admin';
+
+COUNT(WORKER_ID)
+----------------
+               4
+
+12)To fetch worker names with salaries >= 5000 and <= 20000.
+
+SQL> select first_name from worker where salary>=5000 and salary <=20000;
+
+FIRST_NAME
+--------------------
+Monika
+Niharika
+Vipul
+Satish
+Geetika
+
+13)To display the how many number of workers are working in each department.
+
+SQL> select  department,count(*)from worker group by department;
+
+DEPARTMENT             COUNT(*)
+-------------------- ----------
+HR                            2
+Account                       2
+Admin                         4
+
+14)To create new table as “emp” from “worker” table.
+
+SQL> create table emp as select * from worker;
+
+Table created.
+
+15)To show the current date and time.
+
+SQL> select current_date from worker;
+
+CURRENT_D
+---------
+10-OCT-24
+10-OCT-24
+10-OCT-24
+10-OCT-24
+10-OCT-24
+10-OCT-24
+10-OCT-24
+10-OCT-24
+
+8 rows selected.
+
+
+16)To display highest salary worker name from “worker” table.
+
+
+17)To add bonus 1500rs in all worker salary.
+
+SQL> update worker set salary=salary+1500;
+
+8 rows updated.
+
+WORKER_ID FIRST_NAME           LAST_NAME                SALARY JOINING_D DEPARTMENT
+---------- -------------------- -------------------- ---------- --------- --------------------
+         1 Monika               Aaher                     11500 20-FEB-14 HR
+         2 Niharika             Vedpathak                  9500 11-JUN-14 Admin
+         3 Vishal               Shinde                    31500 20-FEB-14 HR
+         4 Amitabh              Survase                   29500 20-FEB-14 Admin
+         5 Vivek                Bhuse                     26500 11-JUN-14 Admin
+         6 Vipul                Diwate                    21500 11-JUN-14 Account
+         7 Satish               Kulkarni                   9000 20-JAN-14 Account
+         8 Geetika              Chavan                    10500 11-APR-14 Admin
+
+8 rows selected.
+
+18)To display average salary of each department from a table.
+
+SQL> select  department,avg(salary)from worker group by department;
+
+DEPARTMENT           AVG(SALARY)
+-------------------- -----------
+HR                         21500
+Account                    15250
+Admin                      19000
+
+19)Find out list of workers whose salary is greater than average salary.
+
+
+20)To increase 1000rs salary of those worker who is working in “Admin” Department.
+
+SQL> update worker set salary=salary+1000 where department='Admin';
+
+4 rows updated.
+
+WORKER_ID FIRST_NAME           LAST_NAME                SALARY JOINING_D DEPARTMENT
+---------- -------------------- -------------------- ---------- --------- --------------------
+         1 Monika               Aaher                     11500 20-FEB-14 HR
+         2 Niharika             Vedpathak                 10500 11-JUN-14 Admin
+         3 Vishal               Shinde                    31500 20-FEB-14 HR
+         4 Amitabh              Survase                   30500 20-FEB-14 Admin
+         5 Vivek                Bhuse                     27500 11-JUN-14 Admin
+         6 Vipul                Diwate                    21500 11-JUN-14 Account
+         7 Satish               Kulkarni                   9000 20-JAN-14 Account
+         8 Geetika              Chavan                    11500 11-APR-14 Admin
+
+8 rows selected.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
