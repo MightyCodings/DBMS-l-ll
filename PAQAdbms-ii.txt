@@ -1,0 +1,228 @@
+1)) Create a package for mathematical power like square ,cube of given number.
+
+create or replace package mathp is
+function sq(a in number)return number;
+function cub(a in number)return number;
+end;
+/
+
+create or replace package body mathp is
+function sq(a in number)return number is
+begin
+return a*a;
+end;
+function cub(a in number)return number is
+begin
+return a*a*a;
+end;
+end;
+/
+
+declare
+a number:=&a;
+cube_result number;
+square_result number;
+begin
+square_result:= mathp.sq(a);
+cube_result:=mathp.cub(a);
+dbms_output.put_line(square_result);
+dbms_output.put_line(cube_result);
+end;
+/
+
+
+
+2)Create a package for display eno., ename, sal, final salary for emp.
+
+create or replace package dis is
+procedure disd;
+end;
+/
+
+create or replace package body dis is
+procedure disd is
+cursor emp_cursor is
+select eno,ename,sal,sal as final_salary from emp6;
+begin
+dbms_output.put_line('eno|ename|sal|fnal_salary');
+dbms_output.put_line('-------------------');
+for emp_rec in emp_cursor loop
+dbms_output.put_line(emp_rec.eno||' | '||emp_rec.ename||' | '||emp_rec.sal || ' | ' || emp_rec.final_salary);
+end loop;
+end;
+end;
+/
+
+begin
+dis.disd;
+end;
+/
+
+
+3)Create a package for private and global object.
+-- Package Specification
+CREATE OR REPLACE PACKAGE example_pkg IS
+  -- Global (Public) Procedure
+  PROCEDURE show_global_data;
+
+  -- Global (Public) Variable
+  global_variable NUMBER := 100; 
+END example_pkg;
+/
+
+-- Package Body
+CREATE OR REPLACE PACKAGE BODY example_pkg IS
+  -- Private Variable (Only accessible inside the package body)
+  private_variable NUMBER := 50;
+
+  -- Private Procedure (Only accessible inside the package body)
+  PROCEDURE show_private_data IS
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('Private Variable Value: ' || private_variable);
+  END show_private_data;
+
+  -- Global (Public) Procedure Implementation
+  PROCEDURE show_global_data IS
+  BEGIN
+    DBMS_OUTPUT.PUT_LINE('Global Variable Value: ' || global_variable);
+
+    -- Call the private procedure (Allowed within the package body)
+    show_private_data;
+  END show_global_data;
+END example_pkg;
+/
+
+
+BEGIN
+  -- Call the public procedure
+  example_pkg.show_global_data;
+END;
+/
+
+4) Write a PL/SQL program to use of %FOUND attribute using cursor.
+
+DECLARE
+  CURSOR emp_cursor IS
+    SELECT eno, ename, sal FROM emp6; -- Adjust the table and column names if needed
+
+  v_eno emp6.eno%TYPE;
+  v_ename emp6.ename%TYPE;
+  v_sal emp6.sal%TYPE;
+BEGIN
+  -- Open the cursor
+  OPEN emp_cursor;
+
+  LOOP
+    -- Fetch the next record
+    FETCH emp_cursor INTO v_eno, v_ename, v_sal;
+
+    -- Check if the last fetch was successful
+    IF emp_cursor%FOUND THEN
+      DBMS_OUTPUT.PUT_LINE('ENO: ' || v_eno || ', ENAME: ' || v_ename || ', SAL: ' || v_sal);
+    ELSE
+      EXIT; -- Exit the loop if no more rows are fetched
+    END IF;
+  END LOOP;
+
+  -- Close the cursor
+  CLOSE emp_cursor;
+END;
+/
+
+
+
+5) Wire a PL/SQL program to use of %NOTFOUND attribute using cursor.  
+
+declare
+id number;
+name varchar2(20);
+salary number;
+cursor c1 is select * from emp;
+begin
+open c1;
+loop
+fetch c1 into id,name,salary;
+exit when c1%notfound;
+dbms_output.put_line(id||name||salary);
+end loop;
+close c1;
+end;
+/
+
+6) Wire a PL/SQL program to use of %ROWCOUNT attribute using cusor.
+declare
+trow number;
+begin
+update empset salary=12000 where salary>5000;
+if:=sql%found then
+trow:=sql%rowcount;
+dbms_output.put_line(trow||'record updated');
+end if;
+if sql%notfound then
+dbms_output.put_line(record not found);
+end if;
+end;
+/
+7) Create a cursor to display empno, salary and empname of all the emps from emp table.
+
+declare
+empno number;
+ename varchar2(20);
+salary number;
+cursor c1 is select * from emp;
+begin
+open c1;
+loop
+fetch c1 into empno,empname,salary;
+exit when c1%notfound;
+dbms_output.put_line(empno||empname||salary);
+end loop;
+close c1;
+end;
+/
+8) Create a DDL trigger  only for create .
+CREATE OR REPLACE TRIGGER ddl_create_trigger
+  AFTER CREATE ON DATABASE
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('A CREATE operation has been executed.');
+  -- Additional logic can be added here, like logging the DDL statement
+END;
+/
+
+9) Create a DDL trigger  only for drop .
+CREATE OR REPLACE TRIGGER ddl_drop_trigger
+  AFTER DROP ON DATABASE
+BEGIN
+  DBMS_OUTPUT.PUT_LINE('A DROP operation has been executed.');
+  -- You can add additional logic here, such as logging details into a custom table
+END;
+/
+
+10)  Create a trigger which not allow to update employee salary at month end.
+CREATE OR REPLACE TRIGGER prevent_salary_update
+  BEFORE UPDATE OF salary ON employee
+  FOR EACH ROW
+BEGIN
+  -- Check if the current date is the last day of the month
+  IF TRUNC(SYSDATE) = LAST_DAY(SYSDATE) THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Cannot update salary on the last day of the month.');
+  END IF;
+END;
+/
+
+11) Create a trigger which not allow to insert negative employee number.
+CREATE OR REPLACE TRIGGER prevent_negative_empno
+  BEFORE INSERT ON employee
+  FOR EACH ROW
+BEGIN
+  -- Check if the employee number is negative
+  IF :NEW.emp_no < 0 THEN
+    RAISE_APPLICATION_ERROR(-20002, 'Employee number cannot be negative.');
+  END IF;
+END;
+/
+
+
+
+
+
